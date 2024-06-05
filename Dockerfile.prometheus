@@ -1,0 +1,14 @@
+# Use an official Prometheus image as a parent image
+FROM prom/prometheus:v2.37.0
+
+# Set the working directory in the container
+WORKDIR /etc/prometheus
+
+# Copy the Prometheus configuration file
+COPY prometheus.yml /etc/prometheus/prometheus.yml
+
+# Expose the Prometheus port
+EXPOSE 9090
+
+# Start Prometheus when the container is run
+CMD ["prometheus", "--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus", "--web.console.libraries=/usr/share/prometheus/console_libraries", "--web.console.templates=/usr/share/prometheus/consoles"]

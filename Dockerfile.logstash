@@ -1,0 +1,14 @@
+# Use an official Logstash image from Docker Hub
+FROM logstash:7.14.0
+
+# Set the working directory in the container
+WORKDIR /usr/share/logstash
+
+# Copy the Logstash configuration files
+COPY logstash.conf /usr/share/logstash/pipeline/logstash.conf
+
+# Expose the Logstash port
+EXPOSE 5044
+
+# Start Logstash when the container is run
+CMD ["logstash", "-f", "/usr/share/logstash/pipeline/logstash.conf"]

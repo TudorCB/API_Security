@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  MONGO_URI: mongodb://your-mongodb-service-name:27017/mydatabase
+  JWT_SECRET: your-jwt-secret
+  SNYK_TOKEN: your-snyk-token
+  # Add other environment variables as needed

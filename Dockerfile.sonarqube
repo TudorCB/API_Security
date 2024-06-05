@@ -1,0 +1,14 @@
+# Use an official SonarQube image from Docker Hub
+FROM sonarqube:latest
+
+# Set the working directory in the container
+WORKDIR /opt/sonarqube
+
+# Copy the SonarQube configuration files
+COPY sonar-project.properties /opt/sonarqube/conf/sonar-project.properties
+
+# Expose the SonarQube port
+EXPOSE 9000
+
+# Start SonarQube when the container is run
+CMD ["bin/linux-x86-64/sonar.sh", "console"]

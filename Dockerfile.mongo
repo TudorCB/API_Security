@@ -1,0 +1,11 @@
+# Use an official MongoDB image from Docker Hub
+FROM mongo:latest
+
+# Set the working directory in the container
+WORKDIR /data/db
+
+# Expose the MongoDB port
+EXPOSE 27017
+
+# Start MongoDB when the container is run
+CMD ["mongod"]

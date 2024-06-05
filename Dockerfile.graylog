@@ -1,0 +1,15 @@
+# Use an official Java runtime as a parent image
+FROM graylog/graylog:4.2
+
+# Set the working directory in the container
+WORKDIR /usr/share/graylog
+
+# Copy the Graylog configuration files
+COPY graylog.conf /etc/graylog/server/graylog.conf
+COPY log4j2.xml /etc/graylog/server/log4j2.xml
+
+# Expose the Graylog ports
+EXPOSE 9000 12201 1514
+
+# Start Graylog when the container is run
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]

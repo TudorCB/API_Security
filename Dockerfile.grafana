@@ -1,0 +1,15 @@
+# Use an official Grafana image from Docker Hub
+FROM grafana/grafana:latest
+
+# Set the working directory in the container
+WORKDIR /usr/share/grafana
+
+# Copy the Grafana configuration files
+COPY grafana.ini /etc/grafana/grafana.ini
+COPY ldap.toml /etc/grafana/ldap.toml
+
+# Expose the Grafana ports
+EXPOSE 3000
+
+# Start Grafana when the container is run
+CMD ["grafana-server", "--config=/etc/grafana/grafana.ini", "--homepath=/usr/share/grafana", "--packaging=docker", "cfg:default.paths.data=/var/lib/grafana", "cfg:default.paths.logs=/var/log/grafana", "cfg:default.paths.plugins=/var/lib/grafana/plugins"]
